@@ -1,5 +1,5 @@
 {
-  'name': 'Cle Carouge thème',
+  'name': 'Thème Clé Carouge',
   'description': 'Thème pour Clé Carouge Sécurité SA',
   'summary': 'Thème pour Clé Carouge Sécurité SA',
   'author': 'anthillsolutions',
@@ -28,7 +28,7 @@
       'theme_clecarouge/static/scss/style.scss',
       'theme_clecarouge/static/js/main.js'
     ],
-  'images': ['static/description/theme_screenshot.jpeg'],
+  'images': ['static/description/banner.jpg'],
   },
   'license': 'LGPL-3',
 }
