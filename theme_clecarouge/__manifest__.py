@@ -28,7 +28,7 @@
       'theme_clecarouge/static/scss/style.scss',
       'theme_clecarouge/static/js/main.js'
     ],
-  'images': ['static/description/banner.jpg'],
+  'images': ['theme_clecarougee/static/description/banner.jpg'],
   },
   'license': 'LGPL-3',
 }
