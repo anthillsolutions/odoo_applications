@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <template id="clecarouge_prestations_securite" name="Prestations - sécurité">
+        <section id="securite" class="prestations-page cc-container two-columns">
+        <div>
+            <figure>
+                <video playsinline="playsinline" muted="muted" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
+                    <source type="video/mp4" src="/theme_clecarouge/static/videos/securite.mp4"></source>
+                    </video>
+                <figcaption>
+                        Sécurité
+                    </figcaption>
+                </figure>
+            </div>
+        <div class="prestations-content">
+            <h2>Sécurité</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </section>
+  </template>
+
+  <template id="clecarouge_prestations_depannages" name="Prestations - dépannages">
+        <section id="depannages" class="prestations-page cc-container two-columns">
+        <div>
+                <figure>
+                    <video playsinline="playsinline" muted="muted" onmouseover="this.play()"
+                        onmouseout="this.pause();this.currentTime=0;">
+                        <source type="video/mp4" src="/theme_clecarouge/static/videos/depannages.mp4"></source>
+                    </video>
+                    <figcaption>
+                        Dépannages
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="prestations-content">
+            <h2>Dépannages
+                    et ouvertures</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </section>
+  </template>
+
+  <template id="clecarouge_prestations_constructions" name="Prestations - constructions">
+        <section id="constructions" class="prestations-page cc-container two-columns">
+        <div>
+                <figure>
+                    <video playsinline="playsinline" muted="muted" onmouseover="this.play()"
+                        onmouseout="this.pause();this.currentTime=0;">
+                        <source type="video/mp4" src="/theme_clecarouge/static/videos/constructions.mp4"></source>
+                    </video>
+                    <figcaption>
+                        Constructions
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="prestations-content">
+            <h2>
+                    Constructions</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </section>
+    </template>
+
+    <template id="clecarouge_snippet_securite" inherit_id="website.snippets" name="Place into bar">
+        <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="theme_clecarouge.clecarouge_prestations_securite" />
+        </xpath>
+    </template>
+    <template id="clecarouge_snippet_depannages" inherit_id="website.snippets" name="Place into bar">
+        <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="theme_clecarouge.clecarouge_prestations_depannages" />
+        </xpath>
+    </template>
+    <template id="clecarouge_snippet_constructions" inherit_id="website.snippets" name="Place into bar">
+        <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="theme_clecarouge.clecarouge_prestations_constructions" />
+        </xpath>
+    </template>
+
+</odoo>

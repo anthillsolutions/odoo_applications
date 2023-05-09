@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <template id="clecarouge_menu" name="Cle Carouge Menu">
+    <xpath expr="//div[@id='top']" position="replace">
+      <header>
+        <nav>
+          <a href="/">
+            <img src="/theme-clecarouge/static/img/logo.svg" alt="logo" height="50" width="300"></img>
+          </a>
+          <ul>
+            <li>
+              <a href="/">A propos</a>
+            </li>
+            <li>
+              <a href="/">Boutique</a>
+            </li>
+            <li>
+              <a href="/">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </xpath>
+  </template>
+</odoo>

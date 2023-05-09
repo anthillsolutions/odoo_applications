@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="clecarouge_contact_us" name="Clé Carouge Contact Us"
+              inherit_id="website.contactus">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <section id="banner" class="banner-imgContact">
+                <div class="container wrapper ">
+                    <div class="banner-content">
+                        <div class="banner-text">
+                            <p class="banner-head">Hello Carouge!</p>
+                            <p class="banner-head">Lets talk buddy</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          </xpath>
+    </template>
+</odoo>

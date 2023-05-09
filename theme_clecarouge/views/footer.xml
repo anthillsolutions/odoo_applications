@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="clecarouge_footer" inherit_id="website.layout"
+              name="Cle Carouge footer">
+        <xpath expr="//footer" position="replace">
+            <footer></footer>
+        </xpath>
+    </template>
+</odoo>

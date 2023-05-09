@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <!-- <template id="clecarouge_product" inherit_id="website_sale.product">
+    <xpath expr="//div[@id='wrap']" position="before">
+      <div class="product">
+        <div class="images">
+          <t t-set="image_holder" t-value="product._get_image_holder()" />
+          <span t-field="image_holder.image_1920"
+            t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_512', 'itemprop': 'image'}"
+            class="image-holder" />
+        </div>
+        <div>
+          <h1 t-field="product.name"></h1>
+          <div class="price">
+            <p>CHF <span t-field="product.base_unit_price"></span>
+            </p>
+          </div>
+          <div>
+            <p>Quantité</p>
+            <div class="quantite">
+              <div class="quantite-variable">
+                <button>-</button>
+                <span>12</span>
+                <button>+</button>
+              </div>
+              <div class="border-bottom fw">
+                <button>Ajouter au panier</button>
+              </div>
+              <div class="fw">
+                <button>Acheter maintenant</button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p t-field="product.description_sale"></p>
+          </div>
+        </div>
+      </div>
+    </xpath>
+  </template> -->
+</odoo>

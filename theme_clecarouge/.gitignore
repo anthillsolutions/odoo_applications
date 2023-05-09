@@ -1,0 +1,21 @@
+# dotfiles
+.*
+!.gitignore
+!.github
+!.mailmap
+# compiled python files
+*.py[co]
+__pycache__/
+# setup.py egg_info
+*.egg-info
+
+
+# js tooling
+node_modules
+jsconfig.json
+tsconfig.json
+package-lock.json
+package.json
+.husky
+
+static/videos/splashscreen.mp4

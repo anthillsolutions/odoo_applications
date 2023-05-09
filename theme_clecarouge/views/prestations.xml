@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- <template id="clecarouge_prestations" inherit_id="website.prestations" name="CleCarouge prestations">
+    <xpath expr="//div[@id='wrap']" position="replace">
+      <div class="page_prestations">
+        <section id="depannages">
+          DEP
+        </section>
+        <section id="securite">
+          SEC
+        </section>
+        <section id="constructions">
+          CON
+        </section>
+      </div>
+    </xpath>
+  </template> -->
+
+  <!-- <template id="clecarouge_prestations" name="CleCarouge prestations custom" inherit_id="website">
+    <xpath expr="//*/page[@name='prestations']" position="replace">
+      <h1>PRESTATIONS STP</h1>
+    </xpath>
+  </template> -->
+</odoo>
