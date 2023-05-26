@@ -124,8 +124,17 @@
         </div>
       </section>
 
-      <div class="cc_search" onClick="closeSearch()">
-        <t t-call="website.website_search_box"></t>
+      <div class="cc_search hidden">
+        <t t-call="website.website_search_box_input">
+          <t t-set="search_type" t-valuef="all" />
+          <t t-set="action" t-valuef="/website/search" />
+          <t t-set="limit" t-valuef="5" />
+          <t t-set="display_image" t-valuef="true" />
+          <t t-set="display_description" t-valuef="true" />
+          <t t-set="display_extra_link" t-valuef="true" />
+          <t t-set="display_detail" t-valuef="true" />
+        </t>
+        <div class="cc_shadow" onClick="closeSearch()"></div>
       </div>
     </xpath>
   </template>

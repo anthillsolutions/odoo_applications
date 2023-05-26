@@ -1,42 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+  <!-- <template id="clecarouge_product_detail" inherit_id="website_sale.product" name="Clé Carouge product detail">
+    <xpath expr="//section[@id='product_detail']" position="attributes">
+      <attribute name="class">product</attribute>
+    </xpath>
+  </template>
+
+  <template id="clecarouge_product_cta" inherit_id="website_sale.product"
+    name="Clé Carouge product detail call to action">
+    <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="attributes">
+      <attribute name="class">cc_cta</attribute>
+    </xpath>
+  </template>
+ -->
+
+  <template id="clecarouge_product_quantite" inherit_id="website_sale.product"
+    name="Clé Carouge product quantite">
+    <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="before">
+      <p>Quantité</p>
+    </xpath>
+  </template>
+
+  <template id="clecarouge_product_cta_wrapper" inherit_id="website_sale.product"
+    name="Clé Carouge product CTA wrapper">
+    <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="attributes">
+      <attribute name="class">cc_cta_wrapper</attribute>
+    </xpath>
+  </template>
+
+ <template id="clecarouge_product_no_breadcrumbs" inherit_id="website_sale.product" name="Clé Carouge product no breadcrumbs">
+  <xpath expr="//section[@id='product_detail']/*[hasclass('row')]" position="replace">
+  </xpath>
+ </template>
+
+  <template id="clecarouge_product_description" inherit_id="website_sale.product"
+    name="Clé Carouge product descirption">
+    <xpath expr="//div[@id='product_details']/p[hasclass('text-muted')]" position="replace">
+    </xpath>
+  </template>
+
+  <template id="clecarouge_product_after_price" inherit_id="website_sale.product"
+    name="Clé Carouge product after price">
+    <xpath expr="//div[@id='product_attributes_simple']" position="before">
+      <p t-field="product.description_sale"
+        placeholder="A short description that will also appear on documents." />
+    </xpath>
+  </template>
+
+  <template id="clecarouge_product_attributes" inherit_id="website_sale.product"
+    name="Clé Carouge product attributes">
+    <xpath expr="//div[@id='product_attributes_simple']" position="replace">
+      <t t-set="single_value_attributes"
+        t-value="product.valid_product_template_attribute_line_ids._prepare_single_value_for_display()" />
+      <div class="cc_attributes">
+        <t t-foreach="single_value_attributes" t-as="attribute">
+          <div class="cc_label">
+            <span t-field="attribute.name" />
+          </div>
+          <div class="cc_description">
+            <t t-foreach="single_value_attributes[attribute]" t-as="ptal">
+              <span t-field="ptal.product_template_value_ids._only_active().name" />
+            </t>
+          </div>
+        </t>
+      </div>
+    </xpath>
+  </template>
+
+  <template id="clecarouge_product_search" inherit_id="website_sale.product"
+    name="Clé Carouge product search">
+    <xpath expr="//section[@id='product_detail']" position="after">
+      <div class="cc_search hidden">
+        <t t-call="website.website_search_box_input">
+          <t t-set="search_type" t-valuef="all" />
+          <t t-set="action" t-valuef="/website/search" />
+          <t t-set="limit" t-valuef="5" />
+          <t t-set="display_image" t-valuef="true" />
+          <t t-set="display_description" t-valuef="true" />
+          <t t-set="display_extra_link" t-valuef="true" />
+          <t t-set="display_detail" t-valuef="true" />
+        </t>
+        <div class="cc_shadow" onClick="closeSearch()"></div>
+      </div>
+    </xpath>
+  </template>
+
   <!-- <template id="clecarouge_product" inherit_id="website_sale.product">
-    <xpath expr="//div[@id='wrap']" position="before">
+  <xpath expr="//section[@id='product_detail']" position="replace">
       <div class="product">
         <div class="images">
           <t t-set="image_holder" t-value="product._get_image_holder()" />
           <span t-field="image_holder.image_1920"
             t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_512', 'itemprop': 'image'}"
             class="image-holder" />
+          <div class="other">
+            <t t-set="product_images"
+              t-value="product_variant._get_images() if product_variant else product._get_images()" />
+            <t t-foreach="product_images" t-as="product_image">
+              <div t-field="product_image.image_1920"
+                t-att-class="image_classes"
+                t-options='{"widget": "image", "preview_image": "image_1024", "class": "oe_unmovable product_detail_img mh-100", "alt-field": "name", "zoom": product_image.can_image_1024_be_zoomed and "image_1920"}' />
+            </t>
+          </div>
         </div>
         <div>
-          <h1 t-field="product.name"></h1>
+          <t t-set="base_url" t-value="product.get_base_url()" />
+          <h1 itemprop="name" t-field="product.name">Product Name</h1>
+          <span itemprop="url" style="display:none;" t-esc="base_url + product.website_url" />
+          <span itemprop="image" style="display:none;"
+            t-esc="base_url + website.image_url(product, 'image_1920')" />
           <div class="price">
             <p>CHF <span t-field="product.base_unit_price"></span>
             </p>
           </div>
-          <div>
-            <p>Quantité</p>
+          <form action="/shop/cart/update" method="POST">
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+            <t t-placeholder="select">
+              <input type="hidden" class="product_id" name="product_id"
+                t-att-value="product_variant.id" />
+              <input type="hidden" class="product_template_id" name="product_template_id"
+                t-att-value="product.id" />
+              <input t-if="product.public_categ_ids.ids" type="hidden" class="product_category_id"
+                name="product_category_id" t-att-value="product.public_categ_ids.ids[0]" />
+              <input t-if="product.product_tag_ids.ids" type="hidden" class="product_tag_id"
+                name="product_tag_id" t-att-value="product.product_tag_ids.ids[0]" />
+              <t t-if="combination" t-call="sale.variants">
+                <t t-set="ul_class" t-valuef="flex-column" />
+                <t t-set="parent_combination" t-value="None" />
+              </t>
+              <t t-else="">
+                <ul class="d-none js_add_cart_variants mb-0"
+                  t-att-data-attribute_exclusions="{'exclusions: []'}" />
+              </t>
+            </t>
+            <p>
+              Quantité</p>
             <div class="quantite">
               <div class="quantite-variable">
                 <button>-</button>
                 <span>12</span>
                 <button>+</button>
               </div>
-              <div class="border-bottom fw">
-                <button>Ajouter au panier</button>
+              <div id="add_to_cart_wrap" class="border-bottom fw">
+                <button onclick="addToCart()">
+                  <span>Ajouter au panier</span>
+                </button>
               </div>
               <div class="fw">
-                <button>Acheter maintenant</button>
+                <button type="submit">Acheter maintenant</button>
               </div>
             </div>
-          </div>
+          </form>
 
           <div>
-            <p t-field="product.description_sale"></p>
+            <p t-field="product.description_sale"
+              placeholder="A short description that will also appear on documents."></p>
+            <t t-set="single_value_attributes"
+              t-value="product.valid_product_template_attribute_line_ids._prepare_single_value_for_display()" />
+            <t t-foreach="single_value_attributes" t-as="attribute">
+                <div>
+                  <span t-field="attribute.name" />: <t
+                    t-foreach="single_value_attributes[attribute]" t-as="ptal">
+                    <span t-field="ptal.product_template_value_ids._only_active().name" />
+                    <t t-if="not ptal_last">, </t>
+                  </t>
+                </div>
+            </t>
           </div>
+
+          <div id="product_option_block"></div>
+          <div id="o_product_terms_and_share"></div>
         </div>
       </div>
+
+      <div class="cc_search hidden">
+        <t t-call="website.website_search_box_input">
+          <t t-set="search_type" t-valuef="all" />
+          <t t-set="action" t-valuef="/website/search" />
+          <t t-set="limit" t-valuef="5" />
+          <t t-set="display_image" t-valuef="true" />
+          <t t-set="display_description" t-valuef="true" />
+          <t t-set="display_extra_link" t-valuef="true" />
+          <t t-set="display_detail" t-valuef="true" />
+        </t>
+        <div class="cc_shadow" onClick="closeSearch()"></div>
+      </div>
     </xpath>
-  </template> -->
+ </template> -->
+
 </odoo>

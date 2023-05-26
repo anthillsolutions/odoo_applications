@@ -16,7 +16,6 @@
     'views/footer.xml',
     'views/header.xml',
     'views/homepage.xml',
-    'views/menu_page.xml',
     'views/product.xml',
     'views/prestations.xml',
     'views/shop.xml',

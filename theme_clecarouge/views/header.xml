@@ -12,25 +12,23 @@
               <a href="/#a-propos">A propos</a>
             </li>
             <li>
-              <a href="/shop">
-                Boutique</a>
+              <a href="/shop">Boutique</a>
             </li>
             <li>
               <a href="/#contact">Contact</a>
             </li>
-            <li>
-              <a href="">
-                <img src="/theme_clecarouge/static/img/icone_rechercher.svg" width="32px" height="32px" />
-              </a>
+            <li onClick="openSearch()" class="shop_only">
+              <img src="/theme_clecarouge/static/img/icone_rechercher.svg" width="32px" height="32px" />
             </li>
-            <li>
-              <a href="/web/login">
+            <li class="shop_only">
+              <a href="/web/login" class="no_border">
                 <img src="/theme_clecarouge/static/img/icone_creer_un_compte.svg" width="32px"
                   height="32px" />
               </a>
+              <t t-call="portal.user_dropdown"></t>
             </li>
-            <li>
-              <a href="/shop/cart">
+            <li class="shop_only">
+              <a href="/shop/cart" class="no_border">
                 <img src="/theme_clecarouge/static/img/icone_panier.svg" width="32px" height="32px" />
               </a>
             </li>
