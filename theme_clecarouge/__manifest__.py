@@ -7,10 +7,10 @@
   'website': 'https://www.anthillsolutions.net',
   'maintainer': 'anthillsolutions',
   'category': 'Theme/website',
-  'depends': ['website_sale', 'website_sale_wishlist'],
+  'depends': ['website_sale'],
   'auto_install': False,
   'installable': True,
-  'version': '0.1',
+  'version': '0.2',
   'data': [ 
     'views/contact_us.xml', 
     'views/footer.xml',
