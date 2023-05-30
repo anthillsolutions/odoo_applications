@@ -16,17 +16,28 @@
 
   <template id="clecarouge_product_quantite" inherit_id="website_sale.product"
     name="Clé Carouge product quantite">
-    <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="before">
+    <xpath expr="//div[hasclass('css_quantity')]" position="before">
       <p>Quantité</p>
     </xpath>
   </template>
 
-  <template id="clecarouge_product_cta_wrapper" inherit_id="website_sale.product"
-    name="Clé Carouge product CTA wrapper">
-    <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="attributes">
-      <attribute name="class">cc_cta_wrapper</attribute>
+  <template id="clecarouge_product_add_to_cart" inherit_id="website_sale.product"
+    name="Clé Carouge add to cart">
+    <xpath expr="//a[@id='add_to_cart']" position="replace">
+      <a data-animation-selector=".o_wsale_product_images" role="button" id="add_to_cart"
+        class="btn btn-primary btn-lg js_check_product a-submit my-1 mr-1 px-5 font-weight-bold flex-grow-1"
+        href="#">Ajouter au panier</a>
     </xpath>
   </template>
+
+  <!-- <template id="product_buy_now" inherit_id="website_sale.product" active="False"
+    customize_show="True" name="Buy Now Button">
+    <xpath expr="//a[@id='add_to_cart']" position="after">
+      <a role="button" class="btn btn-outline-primary btn-lg px-5 font-weight-bold o_we_buy_now"
+        href="#">Acheter maintenant
+        </a>
+    </xpath>
+  </template> -->
 
  <template id="clecarouge_product_no_breadcrumbs" inherit_id="website_sale.product" name="Clé Carouge product no breadcrumbs">
   <xpath expr="//section[@id='product_detail']/*[hasclass('row')]" position="replace">

@@ -99,3 +99,19 @@ const closeSearch = () => {
     search.classList.add('hidden');
   }
 }
+
+/* CAROUSEL */
+const carousel = document.getElementById('shop-carousel');
+if (carousel) {
+  const url = '/website/render_product_carousel';
+
+  fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    }
+  })
+  .then(res => res.json())
+  .then(out =>
+    console.log('Checkout this JSON! ', out))
+  .catch(err => { throw err });
+}

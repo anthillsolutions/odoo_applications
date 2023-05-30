@@ -13,12 +13,14 @@
                     t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
                     class="d-flex h-100 justify-content-center align-items-center" />
                   <div class="shop-item-description">
-                    <t t-set="template_price_vals" t-value="get_product_prices(product)" />
                     <p>
                       <span t-field="product.name"></span>
-                      <span t-field="product.website_published"></span>
                     </p>
-                    <p> CHF <span t-esc="template_price_vals['price_reduce']"></span>
+                    <t t-set="combination_info"
+                      t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)" />
+                    <p>
+                      <span t-esc="combination_info['price']" style="white-space: nowrap;"
+                        t-options="{'widget': 'monetary','display_currency': website.currency_id}" />
                     </p>
                   </div>
                 </a>
@@ -36,12 +38,14 @@
                     t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
                     class="d-flex h-100 justify-content-center align-items-center" />
                   <div class="shop-item-description">
-                    <t t-set="template_price_vals" t-value="get_product_prices(product)" />
                     <p>
                       <span t-field="product.name"></span>
                     </p>
+                    <t t-set="combination_info"
+                      t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)" />
                     <p>
-                      CHF <span t-esc="template_price_vals['price_reduce']"></span>
+                      <span t-esc="combination_info['price']" style="white-space: nowrap;"
+                        t-options="{'widget': 'monetary','display_currency': website.currency_id}" />
                     </p>
                   </div>
                 </a>
@@ -59,12 +63,12 @@
                     t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
                     class="d-flex h-100 justify-content-center align-items-center" />
                   <div class="shop-item-description">
-                    <t t-set="template_price_vals" t-value="get_product_prices(product)" />
                     <p>
                       <span t-field="product.name"></span>
                     </p>
                     <p>
-                      CHF <span t-esc="template_price_vals['price_reduce']"></span>
+                      <span t-esc="combination_info['price']" style="white-space: nowrap;"
+                        t-options="{'widget': 'monetary','display_currency': website.currency_id}" />
                     </p>
                   </div>
                 </a>
@@ -78,8 +82,7 @@
             <ul>
               <li>
                 <a href="/shop">
-                  Tout <span t-field="website.shop_ppr"></span>
-                  <span t-field="website.shop_ppg"></span>
+                  Tout
                 </a>
               </li>
               <li t-foreach="categories" t-as="c">
@@ -100,11 +103,22 @@
           </div>
 
           <div id="options-sort" class="shop-options-sort">
+            <t t-set="list_price_asc_label">Price - Low to High</t>
+            <t t-set="list_price_desc_label">Price - High to Low</t>
+            <t t-set="newest_arrivals_desc_label">Newest arrivals</t>
+            <t t-set="name_asc_label">Name</t>
+          <t t-set="website_sale_sortable"
+              t-value="[
+                (list_price_asc_label, 'list_price asc'),
+                (list_price_desc_label, 'list_price desc'),
+                (newest_arrivals_desc_label, 'create_date desc'),
+                (name_asc_label, 'name asc')
+            ]" />
             <ul >
               <li t-foreach="website_sale_sortable" t-as="sortby">
                 <a role="menuitem" rel="noindex,nofollow"
-                  t-att-href="keep('/shop', order=sortby[0])" class="dropdown-item">
-                  <span t-out="sortby[1]" />
+                  t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
+                  <span t-out="sortby[0]" />
                 </a>
               </li>
             </ul>

@@ -231,6 +231,12 @@ button {
             }
           }
         }
+
+        .dropdown-menu {
+          a {
+            color: black;
+          }
+        }
       }
     }
   }
@@ -449,11 +455,6 @@ button {
       line-height: 60px !important;
     }
 
-    // .o_wsale_product_images {
-    //   width: 100%;
-    //   margin-top: 0 !important;
-    // }
-
     .images {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -511,6 +512,67 @@ button {
       }
     }
   }
+
+.css_quantity {
+  width: 30rem;
+  border: solid 1px white;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  flex-flow: unset;
+  margin-bottom: 0 !important;
+  height: 52px;
+
+  .btn {
+    background: none;
+    border: none;
+    color: white;
+  }
+
+  input {
+    max-width: 100%;
+    width: 100%;
+    background: black;
+    color: white;
+    border: none;
+    font-size: 1.5rem !important;
+  }
+
+  div {
+    align-self: center;
+  }
+}
+
+#add_to_cart_wrap {
+  width: 30rem;
+  border: solid 1px white;
+  border-top: none;
+  display: block !important;
+
+  .btn {
+    font-family: 'MarkPro', sans-serif;
+    font-size: 30px !important;
+    line-height: 35px !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    display: block;
+  }
+
+  .btn-primary {
+    background: black;
+    color: white;
+    border: none;
+
+    &:hover {
+      background: white;
+      color: black;
+    }
+  }
+
+  .fa {
+    display: none;
+  }
+}
 
 /* prestations-page */
 .prestations-page {
@@ -707,5 +769,9 @@ form label {
     .prestations-content {
       padding-right: 0;
     }
+  }
+
+  .video_banner {
+    display: none;
   }
 }

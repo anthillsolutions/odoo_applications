@@ -41,13 +41,13 @@ class ProductCarouselWebsiteSale(WebsiteSale):
         template = "website_snippet_carousel_product.s_product_carousel_items"
         return request.website.viewref(template).render(
             {
-                "objects": records_grouped,
-                "keep": QueryURL("/shop"),
-                "pager": request.website.pager(
-                    url="/shop", total=limit, scope=7, url_args=kwargs
-                ),
-                "products_per_slide": products_per_slide,
-                "num_slides": len(records_grouped),
-                "uniqueId": "pc-%d" % int(time.time() * 1000),
+                # "objects": records_grouped,
+                # "keep": QueryURL("/shop"),
+                # "pager": request.website.pager(
+                #     url="/shop", total=limit, scope=7, url_args=kwargs
+                # ),
+                # "products_per_slide": products_per_slide,
+                # "num_slides": len(records_grouped),
+                # "uniqueId": "pc-%d" % int(time.time() * 1000),
             }
         )
