@@ -102,16 +102,17 @@ const closeSearch = () => {
 
 /* CAROUSEL */
 const carousel = document.getElementById('shop-carousel');
-if (carousel) {
-  const url = '/website/render_product_carousel';
+// if (carousel) {
+//   // const url = '/website/suggestions';
+//   const url = '/website/render_product_carousel';
 
-  fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-    }
-  })
-  .then(res => res.json())
-  .then(out =>
-    console.log('Checkout this JSON! ', out))
-  .catch(err => { throw err });
-}
+//   fetch(url, {
+//     // headers: {
+//     //   "Content-Type": "application/json",
+//     // }
+//   })
+//   .then(res => res.json())
+//   .then(out =>
+//     console.log('Checkout this JSON! ', out))
+//   .catch(err => { throw err });
+// }

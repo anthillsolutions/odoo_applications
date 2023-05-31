@@ -513,32 +513,34 @@ button {
     }
   }
 
-.css_quantity {
-  width: 30rem;
-  border: solid 1px white;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  flex-flow: unset;
-  margin-bottom: 0 !important;
-  height: 52px;
+.js_product {
+  .css_quantity {
+    width: 30rem;
+    border: solid 1px white;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    flex-flow: unset;
+    margin-bottom: 0 !important;
+    height: 52px;
 
-  .btn {
-    background: none;
-    border: none;
-    color: white;
-  }
+    .btn {
+      background: none;
+      border: none;
+      color: white;
+    }
 
-  input {
-    max-width: 100%;
-    width: 100%;
-    background: black;
-    color: white;
-    border: none;
-    font-size: 1.5rem !important;
-  }
+    input {
+      max-width: 100%;
+      width: 100%;
+      background: black;
+      color: white;
+      border: none;
+      font-size: 1.5rem !important;
+    }
 
-  div {
-    align-self: center;
+    div {
+      align-self: center;
+    }
   }
 }
 
@@ -745,6 +747,29 @@ form label {
   }
 }
 
+/* CART LINES */
+.js_cart_lines {
+  color: black;
+  font-size: 1rem;
+
+  a {
+    color: black;
+  }
+
+  th {
+    font-size: 1rem;
+  }
+
+  tr {
+    display: grid;
+    grid-template-columns: 5rem 1fr 8rem 9rem 4rem;
+  }
+}
+
+.js_cart_summary {
+  font-size: 1rem;
+}
+
 @media screen and (max-width: 767px) {
   .cc-container {
     &.two-columns {
@@ -773,5 +798,15 @@ form label {
 
   .video_banner {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .text-container {
+    padding: 0 4rem;
+  }
+
+  .cc_header {
+    padding: 4rem;
   }
 }
