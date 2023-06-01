@@ -3,7 +3,7 @@
   <template id="clecarouge_header" inherit_id="website.layout" name="CleCarouge Header">
     <xpath expr="//header" position="replace">
       <header id="clecarouge_nav" class="cc_header hidden" onclick="closeMenus()">
-        <nav>
+        <nav id="cc_nav">
           <a href="/">
             <img src="/theme_clecarouge/static/img/logo.svg" alt="logo" height="100" width="300"></img>
           </a>
@@ -34,6 +34,12 @@
             </li>
           </ul>
         </nav>
+        <a href="/" class="cc_logo">
+          <img src="/theme_clecarouge/static/img/favicon.svg" alt="logo" height="100" width="100"></img>
+        </a>
+        <button class="cc_nav" onclick="toggleMenuMobile()">
+          <img src="/theme_clecarouge/static/img/menu.svg" height="32px" width="32px"></img>
+        </button>
       </header>
     </xpath>
   </template>

@@ -116,3 +116,15 @@ const carousel = document.getElementById('shop-carousel');
 //     console.log('Checkout this JSON! ', out))
 //   .catch(err => { throw err });
 // }
+
+/* Toggle menu mobile */
+const toggleMenuMobile = () => {
+  const nav = document.getElementById('cc_nav');
+  if (nav) {
+    if (nav.classList.contains('show')) {
+      nav.classList.remove('show');
+    } else {
+      nav.classList.add('show');
+    }
+  }
+}

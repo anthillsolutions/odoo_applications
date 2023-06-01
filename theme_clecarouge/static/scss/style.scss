@@ -11,12 +11,9 @@
 }
 
 body {
-  font-family: 'MarkPro', sans-serif;
-  font-weight: 400;
   background: black;
   color: white;
-  font-size: 30px;
-  line-height: 35px;
+  font-family: 'MarkPro', sans-serif;
 }
 
 h1,
@@ -52,6 +49,10 @@ a {
   position: relative;
   width: 100%;
   min-height: 100%;
+  font-family: 'MarkPro', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
 
   &.two-columns {
     display: grid;
@@ -84,6 +85,11 @@ a {
 
 
 .prestations {
+  font-family: 'MarkPro', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
+
   a {
     display: grid;
     color: white;
@@ -195,10 +201,19 @@ button {
   z-index: 2;
   transform: translateY(0%);
   transition: 0.7s;
+  font-family: 'MarkPro', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
 
   &.hidden {
     transform: translateY(-100%);
     transition: 0.7s;
+  }
+
+  .cc_logo,
+  .cc_nav {
+    display: none;
   }
 
   nav {
@@ -237,6 +252,65 @@ button {
             color: black;
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  .cc_container {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .cc_header {
+    &.hidden {
+      transform: translateY(0%);
+      transition: 0;
+    }
+    nav {
+      display: none;
+
+      &.show {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: black;
+        z-index: 10;
+      }
+    }
+
+    .cc_logo,
+    .cc_nav {
+      display: block;
+    }
+
+    .cc_nav {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      border: none;
+    }
+  }
+
+  .prestations {
+    a {
+      border-bottom: solid 1px white;
+
+      &::before {
+        display: none;
+      }
+
+      figcaption {
+        opacity: 1;
       }
     }
   }
@@ -285,6 +359,10 @@ button {
   padding-top: 120px;
   box-sizing: border-box;
   position: relative;
+  font-family: 'MarkPro', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
 
   .shop-options {
     position: fixed;
