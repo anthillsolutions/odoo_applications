@@ -1,3 +1,5 @@
+let maxSlides = 0;
+
 const options = {
     root: null,
     rootMargin: '0px',
@@ -102,20 +104,76 @@ const closeSearch = () => {
 
 /* CAROUSEL */
 const carousel = document.getElementById('shop-carousel');
-// if (carousel) {
-//   // const url = '/website/suggestions';
-//   const url = '/website/render_product_carousel';
+if (carousel) {
+  const url = '/website/suggestions';
+  const container = document.getElementById('shop-carousel-container');
 
-//   fetch(url, {
-//     // headers: {
-//     //   "Content-Type": "application/json",
-//     // }
-//   })
-//   .then(res => res.json())
-//   .then(out =>
-//     console.log('Checkout this JSON! ', out))
-//   .catch(err => { throw err });
-// }
+  fetch(url)
+  .then(res => res.json())
+  .then(products => {
+    maxSlides = products.length;
+    products.forEach((product, index) => container ? container.appendChild(createSlide(product, index)) : undefined); 
+  })
+  .catch(err => { throw err });
+}
+
+/* SLIDE CREATTION */
+const createSlide = (product, index) => {
+  const slide = document.createElement('a');
+  slide.setAttribute('id', `carousel-product${index}`);
+  slide.setAttribute('href', `/shop/${product.id}`);
+  const picture = document.createElement('img');
+  picture.setAttribute('src', `/web/image/product.template/${product.id}/image_1920`);
+  const description = document.createElement('div');
+  description.setAttribute('class', 'shop-item-description');
+  const name = document.createElement('p');
+  name.textContent = product.name;
+  const price = document.createElement('p');
+  price.textContent = `CHF ${product.price}`;
+  description.appendChild(name);
+  slide.appendChild(picture);
+  // slide.appendChild(description);
+  return slide;
+}
+
+/* button prev */
+const carouselPrev = () => {
+  const close = getClosest(-1);
+
+  if (close !== undefined && close >= 0) {
+    window.location = `/#carousel-product${close}`;
+  }
+}
+
+const carouselNext = () => {
+  const close = getClosest(1);
+
+  if (close !== undefined && close < maxSlides) {
+    window.location = `/#carousel-product${close}`;
+  }
+}
+
+const getClosest = (isNext) => {
+  const visible = [...new Array(maxSlides)]
+    .map((_, index) => `carousel-product${index}`)
+    .map((id) => isElementVisible(id, false));
+  const id = visible.findIndex((item) => !!item);
+  return isElementVisible(`carousel-product${id}`, true) ? id + isNext : id;
+}
+
+/* Is element visible */
+const isElementVisible = (id, exact) => {
+  console.log(id, exact);
+  const el = document.getElementById(id);
+  const rect = el.getBoundingClientRect();
+  const elemLeft = rect.left;
+  const elemRight = rect.right;
+  
+  const mid = window.innerWidth / 2;
+  return exact ? 
+    elemLeft >= 0 && elemRight <= window.innerWidth :
+    elemLeft > -mid && elemLeft < mid && elemRight > mid && elemRight < 3 * mid;
+}
 
 /* Toggle menu mobile */
 const toggleMenuMobile = () => {
@@ -128,3 +186,48 @@ const toggleMenuMobile = () => {
     }
   }
 }
+
+/* mapgl */
+if (document.getElementById('contact-map')) {
+  const url = '/website/mapgl';
+
+  fetch(url)
+  .then(res => res.json())
+  .then(res => {
+    mapboxgl.accessToken = res.token;
+    const map = new mapboxgl.Map({
+      container: 'contact-map',
+      style: 'mapbox://styles/mapbox/dark-v10',
+      center: [6.130343, 46.1863962],
+      zoom: 15,
+      projection: 'globe'
+    });
+    map.on('style.load', () => {
+      map.setFog({});
+    });
+    const marker = new mapboxgl.Marker({
+      color: '#DC001C'
+    }).setLngLat([6.130343, 46.1863962])
+      .addTo(map);
+  })
+  .catch(err => { throw err });
+}
+
+/* MENU MOBILEE SHOP */
+const toggleMenuMobileShop = () => { 
+  const element = document.getElementById('menu_mobile_shop');
+  const button = element.getElementsByTagName('button')[0];
+  const list = element.getElementsByClassName('shop-options-mobile-panel')[0];
+
+  if (!list.classList.contains('visible')) {
+    setTimeout(() => {
+      list.classList.add('visible');
+      button.classList.add('down');
+    }, 50);
+  } else {
+    setTimeout(() => {
+      list.classList.remove('visible');
+      button.classList.remove('down');
+    }, 50);
+  }
+};

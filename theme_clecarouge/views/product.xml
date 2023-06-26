@@ -96,6 +96,13 @@
     </xpath>
   </template>
 
+  <template id="clecarouge_product_detail" inherit_id="website_sale.product"
+    name="Clé Carouge product detail">
+    <xpath expr="//section[@id='product_detail']" position="attributes">
+      <attribute name="class">cc_product</attribute>
+    </xpath>
+  </template>
+
   <!-- <template id="clecarouge_product" inherit_id="website_sale.product">
   <xpath expr="//section[@id='product_detail']" position="replace">
       <div class="product">

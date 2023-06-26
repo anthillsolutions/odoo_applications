@@ -86,9 +86,13 @@
 
         <section id="shop-carousel" class="carousel cc-container">
             <div class="carousel-container">
-                <div>·</div>
-                <div>carousel en maintenance</div>
-                <div>·</div>
+                <button class="btn-carousel" id="carousel-prev" onclick="carouselPrev()">
+                    ·
+                </button>
+                <div id="shop-carousel-container" class="carousel-inner"></div>
+                <button class="btn-carousel" id="carousel-next" onclick="carouselNext()">
+                    ·
+                </button>
             </div>
             <div class="description">
                 <div>Exemple de produits</div>
@@ -109,8 +113,7 @@
                 </p>
             </div>
 
-            <div>
-                <img loading="lazy" class="map" width="720" height="900" src="https://api.mapbox.com/styles/v1/mapbox/dark-v10/static/pin-l+d81313(6.130343,46.1863962)/[6.1223,46.179,6.1383,46.1938]/300x400@2x?before_layer=admin-0-boundary&amp;access_token=pk.eyJ1IjoicGllcnJlLXJhIiwiYSI6ImNsOGl0d2R5bjAyanIzeGtsY295eWl6NHQifQ.tBH-Vdj8-3FUV4cK-RD1YA" />
+            <div class="contact-map" id="contact-map">
             </div>
 
             <button class="newsletter">S'abonner à notre newsletter</button>

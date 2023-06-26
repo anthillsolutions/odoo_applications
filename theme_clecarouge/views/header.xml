@@ -4,8 +4,9 @@
     <xpath expr="//header" position="replace">
       <header id="clecarouge_nav" class="cc_header hidden" onclick="closeMenus()">
         <nav id="cc_nav">
-          <a href="/">
-            <img src="/theme_clecarouge/static/img/logo.svg" alt="logo" height="100" width="300"></img>
+          <a href="/" class="cc_nav_logo">
+            <img class="desktop-only" src="/theme_clecarouge/static/img/logo.svg" alt="logo" height="100" width="300"></img>
+            <img class="mobile-only" src="/theme_clecarouge/static/img/favicon.svg" alt="logo" height="60" width="60"></img>
           </a>
           <ul>
             <li>
@@ -18,7 +19,8 @@
               <a href="/#contact">Contact</a>
             </li>
             <li onClick="openSearch()" class="shop_only">
-              <img src="/theme_clecarouge/static/img/icone_rechercher.svg" width="32px" height="32px" />
+              <img src="/theme_clecarouge/static/img/icone_rechercher.svg" width="32px"
+                height="32px" />
             </li>
             <li class="shop_only">
               <a href="/web/login" class="no_border">
@@ -33,9 +35,12 @@
               </a>
             </li>
           </ul>
+          <button class="cc_close_menu" onclick="toggleMenuMobile()">
+            <img src="/theme_clecarouge/static/img/cross.svg" height="32px" width="32px"></img>
+          </button>
         </nav>
         <a href="/" class="cc_logo">
-          <img src="/theme_clecarouge/static/img/favicon.svg" alt="logo" height="100" width="100"></img>
+          <img src="/theme_clecarouge/static/img/favicon.svg" alt="logo" height="60" width="60"></img>
         </a>
         <button class="cc_nav" onclick="toggleMenuMobile()">
           <img src="/theme_clecarouge/static/img/menu.svg" height="32px" width="32px"></img>
@@ -43,4 +48,6 @@
       </header>
     </xpath>
   </template>
+
+  <!-- t-esc="user_id._is_public()" -->
 </odoo>

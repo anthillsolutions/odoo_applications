@@ -24,7 +24,9 @@
   'assets': {
     'web.assets_frontend': [
       'theme_clecarouge/static/scss/style.scss',
-      'theme_clecarouge/static/js/main.js'
+      'https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css',
+      'theme_clecarouge/static/js/main.js',
+      'https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'
     ],
   'images': ['theme_clecarougee/static/description/banner.jpg'],
   },
