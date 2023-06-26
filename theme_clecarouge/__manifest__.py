@@ -10,7 +10,7 @@
   'depends': ['website_sale'],
   'auto_install': False,
   'installable': True,
-  'version': '0.4',
+  'version': '0.5',
   'data': [ 
     'views/contact_us.xml', 
     'views/footer.xml',
