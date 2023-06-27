@@ -6,7 +6,7 @@
 
         <section id="video_banner" class="video_banner cc-container">
                 <figure>
-                    <video playsinline="playsinline" muted="muted" autoplay="autoplay">
+                    <video playsinline="playsinline" muted="muted" autoplay="autoplay" loop="loop">
                         <source type="video/mp4"
                             src="/theme_clecarouge/static/videos/splashscreen.mp4"></source>
                     </video>

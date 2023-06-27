@@ -23,5 +23,5 @@ class CarouselWebsiteSale(http.Controller):
 class MapGLToken(http.Controller):
     @http.route(['/website/mapgl'], type='http', auth='public', methods=['GET'], website='True')
     def get_mapgl_token(self):
-        token = http.request.env['ir.config_parameter'].get_param('cc_mapgl_token')
+        token = http.request.env['ir.config_parameter'].sudo().get_param('cc_mapgl_token')
         return json.dumps({ 'token': token })
