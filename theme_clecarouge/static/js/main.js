@@ -1,4 +1,5 @@
 let maxSlides = 0;
+let canGoBack = true;
 
 const options = {
     root: null,
@@ -132,7 +133,6 @@ const createSlide = (product, index) => {
   price.textContent = `CHF ${product.price}`;
   description.appendChild(name);
   slide.appendChild(picture);
-  // slide.appendChild(description);
   return slide;
 }
 
@@ -163,7 +163,6 @@ const getClosest = (isNext) => {
 
 /* Is element visible */
 const isElementVisible = (id, exact) => {
-  console.log(id, exact);
   const el = document.getElementById(id);
   const rect = el.getBoundingClientRect();
   const elemLeft = rect.left;
@@ -213,7 +212,7 @@ if (document.getElementById('contact-map')) {
   .catch(err => { throw err });
 }
 
-/* MENU MOBILEE SHOP */
+/* MENU MOBILE SHOP */
 const toggleMenuMobileShop = () => { 
   const element = document.getElementById('menu_mobile_shop');
   const button = element.getElementsByTagName('button')[0];
@@ -231,3 +230,26 @@ const toggleMenuMobileShop = () => {
     }, 50);
   }
 };
+
+/* VIDEO BANNER SCROLL */
+const mainEl = document.querySelector('main');
+mainEl.addEventListener('scroll', (event) => {
+  if (mainEl.scrollTop >= window.innerHeight) {
+    canGoBack = false;
+  }
+  if (!canGoBack && mainEl.scrollTop <= window.innerHeight) {
+    mainEl.classList.add('no-scroll');
+    event.stopImmediatePropagation();
+    event.preventDefault();
+    mainEl.scrollTo({ top: window.innerHeight });
+    setTimeout(() => {
+      mainEl.classList.remove('no-scroll');
+    }, 150);
+  }
+});
+
+/* VIDEO SCROLL */
+const videoEl = document.querySelector('section#video_banner video');
+videoEl.addEventListener('ended', () => {
+  document.getElementById('a-propos').scrollIntoView();
+});

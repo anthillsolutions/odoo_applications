@@ -51,8 +51,8 @@ a {
   min-height: 100%;
   font-family: 'MarkPro', sans-serif;
   font-weight: 400;
-  font-size: 30px;
-  line-height: 35px;
+  font-size: 20px;
+  line-height: 25px;
 
   &.two-columns {
     display: grid;
@@ -271,13 +271,28 @@ button {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .cc_header {
+    background: linear-gradient(to bottom, black 80%, transparent 100%);
+    nav {
+      ul {
+        li {
+          a {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   h1 {
-    font-size: 40px;
-    line-height: 45px;
+    font-size: 30px;
+    line-height: 35px;
   }
 
-  .cc_container {
+  .cc-container {
     font-size: 20px;
     line-height: 25px;
   }
@@ -379,6 +394,11 @@ button {
     main {
       scroll-snap-type: y mandatory;
 
+      &.no-scroll {
+        scroll-snap-type: none;
+        scroll-behavior: inherit;
+      }
+
       section {
         scroll-snap-align: start;
       }
@@ -400,8 +420,8 @@ button {
   position: relative;
   font-family: 'MarkPro', sans-serif;
   font-weight: 400;
-  font-size: 30px;
-  line-height: 35px;
+  font-size: 20px;
+  line-height: 25px;
 
   .shop-options {
     position: fixed;
@@ -812,6 +832,12 @@ button {
       overflow-x: auto;
       scroll-behavior: smooth;
       scroll-snap-stop: always;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       a {
         width: 100%;
@@ -984,7 +1010,7 @@ form label {
 
   #product_details {
     h1 {
-      font-size: 50px !important;
+      font-size: 30px !important;
     }
 
     h3 {
@@ -993,7 +1019,7 @@ form label {
   }
 
   .cc-container {
-    font-size: 25px;
+    font-size: 20px;
 
     &.two-columns {
       grid-template-columns: 1fr;
