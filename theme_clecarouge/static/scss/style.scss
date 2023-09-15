@@ -274,6 +274,11 @@ button {
 @media screen and (min-width: 768px) {
   .cc_header {
     background: linear-gradient(to bottom, black 80%, transparent 100%);
+
+    &.no-background {
+      background: transparent;
+    }
+
     nav {
       ul {
         li {
