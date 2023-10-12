@@ -63,6 +63,11 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  &.cc-padded {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 }
 
 .video_banner {
@@ -202,6 +207,12 @@ button {
     background: white;
     color: black;
     transition: 0.3s;
+  }
+}
+
+#wrapwrap.o_portal {
+  .cc_header {
+    display: none !important;
   }
 }
 
@@ -1234,6 +1245,12 @@ form label {
 
   .cc_header {
     padding: 4rem;
+  }
+
+  .cc-shop {
+    .shop-options {
+      top: 226px;
+    }
   }
 
   .contact-us {

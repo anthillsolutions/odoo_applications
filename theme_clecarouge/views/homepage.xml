@@ -13,7 +13,7 @@
                 </figure>
         </section>
 
-        <section id="a-propos" class="about-us cc-container two-columns no-scroll">
+        <section id="a-propos" class="about-us cc-container two-columns no-scroll cc-padded">
                 <div class="text-container">
                     <h1>
                         Clé Carouge Sécurité SA Votre Spécialiste
@@ -46,7 +46,7 @@
                 </div>
             </section>
 
-        <section id="prestations" class="prestations cc-container three-columns">
+            <section id="prestations" class="prestations cc-container three-columns">
             <a href="/prestations#depannages">
                     <figure>
                         <video playsinline="playsinline" muted="muted" onmouseover="this.play()"

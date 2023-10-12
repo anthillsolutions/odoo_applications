@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- <template id="clecarouge_wrapwrap" name="CléCarouge wrapwrap" inherit_id="portal.frontend_layout">
+        <xpath expr="//div[@id='wrapwrap]" position="attributes">
+            <attribute name="class">cc_wrap</attribute>
+        </xpath>
+        <xpath expr="//div[@id='wrapwrap]" position="after">
+            <div>MENU</div>
+        </xpath>
+    </template> -->
+
     <template id="clecarouge_prestations_global" name="CléCarouge prestations global">
         <div class="cc-scroll">
             <section id="securite" class="prestations-page cc-container two-columns">
