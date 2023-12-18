@@ -264,3 +264,31 @@ const shop = document.getElementById('clecarouge_nav');
 if (shop) {
   shop.classList.add('no-background');
 }
+
+/* SHOP MENU ITEMS */
+const subcategories = 13;
+const openCategory = (event, index) => {
+  event.stopImmediatePropagation();
+  event.preventDefault();
+  closeCategories(event.target);
+  document.getElementById(`sub${index}`).classList.remove('hidden');
+};
+
+const toggleCategoriesMobile = () => {
+  document.getElementById('cat-menu-open').classList.toggle('hidden');
+  document.getElementById('cat-menu-closed').classList.toggle('hidden');
+  document.getElementsByClassName('categories-list')[0].classList.toggle('show');
+};
+
+const closeCategories = (current) => { 
+  [...new Array(subcategories)].map((_, index) => {
+    const sub = document.getElementById(`sub${index}`);
+    if (sub && !sub.contains(current)) {
+        sub.classList.add('hidden');
+    }
+  });
+};
+
+document.addEventListener('click', (event) => {
+  closeCategories(event.target);
+});

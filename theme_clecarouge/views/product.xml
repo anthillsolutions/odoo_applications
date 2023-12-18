@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <!-- <template id="clecarouge_product_detail" inherit_id="website_sale.product" name="Clé Carouge product detail">
-    <xpath expr="//section[@id='product_detail']" position="attributes">
-      <attribute name="class">product</attribute>
-    </xpath>
-  </template>
-
-  <template id="clecarouge_product_cta" inherit_id="website_sale.product"
-    name="Clé Carouge product detail call to action">
-    <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="attributes">
-      <attribute name="class">cc_cta</attribute>
-    </xpath>
-  </template>
- -->
-
   <template id="clecarouge_product_quantite" inherit_id="website_sale.product"
     name="Clé Carouge product quantite">
     <xpath expr="//div[hasclass('css_quantity')]" position="before">
@@ -29,6 +15,12 @@
         href="#">Ajouter au panier</a>
     </xpath>
   </template>
+
+  <!-- <template id="clecarouge_product_iemscope" inherit_id="website_sale.products_item" name="Clé Carouge product items">
+    <xpath expr="//div[@wrap='wrap']" position="attributes">
+      <attribute name="class">cc_product</attribute>
+    </xpath>
+  </template> -->
 
   <!-- <template id="product_buy_now" inherit_id="website_sale.product" active="False"
     customize_show="True" name="Buy Now Button">
