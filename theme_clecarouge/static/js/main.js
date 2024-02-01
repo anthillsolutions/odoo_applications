@@ -234,7 +234,7 @@ const toggleMenuMobileShop = () => {
 /* VIDEO BANNER SCROLL */
 const videoEl = document.querySelector('section#video_banner video');
 const mainEl = document.querySelector('main');
-if (videoEl) {
+if (videoEl && document.documentElement.clientWidth >= 768) {
   mainEl.addEventListener('scroll', (event) => {
     if (mainEl.scrollTop >= window.innerHeight) {
       canGoBack = false;
@@ -253,7 +253,7 @@ if (videoEl) {
 
 /* VIDEO SCROLL */
 
-if (videoEl) {
+if (videoEl && document.documentElement.clientWidth >= 768) {
   videoEl.addEventListener('ended', () => {
     document.getElementById('a-propos').scrollIntoView();
   });
@@ -292,3 +292,17 @@ const closeCategories = (current) => {
 document.addEventListener('click', (event) => {
   closeCategories(event.target);
 });
+
+const resizeShop = () => {
+  const categoriesList = document.getElementsByClassName('categories-list')[0];
+  const shop = document.getElementsByClassName('shop-grid')[0];
+
+  if (categoriesList && shop) {
+    shop.style.paddingTop = `${categoriesList.clientHeight}px`;
+  }
+};
+
+resizeShop();
+window.addEventListener('resize', (event) => {
+  resizeShop();
+}, true);

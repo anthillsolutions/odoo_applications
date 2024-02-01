@@ -165,7 +165,8 @@ a {
 .cc-shop,
 .cc_shop,
 .o_portal_wrap {
-  padding-top: 86px;
+  padding-top: 132px;
+  box-sizing: border-box;
 }
 
 .o_portal_wrap {
@@ -226,7 +227,7 @@ button {
   padding: 1rem;
   z-index: 2;
   transform: translateY(0%);
-  transition: 0;
+  transition: none;
   font-family: 'MarkPro', sans-serif;
   font-weight: 400;
   font-size: 30px;
@@ -298,12 +299,6 @@ button {
 
 @media screen and (min-width: 768px) {
   .cc_header {
-    // background: linear-gradient(to bottom, black 80%, transparent 100%);
-
-    // &.no-background {
-    //   background: transparent;
-    // }
-
     nav {
       ul {
         li {
@@ -316,7 +311,7 @@ button {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   h1 {
     font-size: 30px;
     line-height: 35px;
@@ -462,7 +457,9 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    position: relative;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
 
     li {
       display: block;
@@ -494,6 +491,10 @@ button {
           .inner-subcategory {
             a {
               color: white;
+
+              &:hover {
+                color: black;
+              }
             }
           }
         }
@@ -597,10 +598,10 @@ button {
       left: 0;
       bottom: 0;
       right: 0;
-      height: 8rem;
+      top: 0;
       pointer-events: none;
-      background: rgba(black, 0.5);
-      color: purple;
+      background: rgba(black, 0.2);
+      color: white;
       text-align: center;
       display: grid;
       align-items: center;
@@ -1198,13 +1199,17 @@ form label {
 }
 
 #oe_main_menu_navbar + #wrapwrap {
-  margin-top: 46px;
+  // margin-top: 46px;
 
   .cc_header {
     top: 46px;
   }
 }
 
+
+/*************************************
+ *  MOBILE VIEW
+ *************************************/
 @media screen and (max-width: 767px) {
   .desktop-only {
     display: none;
@@ -1226,6 +1231,11 @@ form label {
     h3 {
       font-size: 30px !important;
     }
+  }
+
+  .homepage .cc_header {
+    transition: 0.2s;
+    transform: none;
   }
 
   .cc-container {
@@ -1271,10 +1281,12 @@ form label {
 
   .about-us,
   .carousel,
+  .contact-us,
   .cc-shop,
   .cc_shop,
-  .o_portal_wrap {
-    padding-top: 46px;
+  .o_portal_wrap,
+  .prestations {
+    padding-top: 92px;
   }
 
   #o-carousel-product {
@@ -1310,6 +1322,7 @@ form label {
       left: auto;
       right: auto;
       margin: 0 1rem;
+      margin-bottom: 1rem;
     }
   }
 
@@ -1344,7 +1357,7 @@ form label {
   .cc_shop {
     .categories {
       position: fixed;
-      width: 100vw;
+      width: 100dvw;
       z-index: 2;
 
       button {
@@ -1375,16 +1388,22 @@ form label {
         &.show {
           display: block;
           overflow: auto;
-          min-height: 100vh;
+          height: 100dvh;
+          width: 100dvw;
+          box-sizing: border-box;
         }
 
         .subcategories {
           position: relative;
           top: inherit;
+          width: 100%;
+          box-sizing: border-box;
 
           li {
             border: none;
             padding-left: 3rem;
+            width: 100%;
+            box-sizing: border-box;
 
             &:hover {
               background: black;
@@ -1394,12 +1413,20 @@ form label {
                 color: white;
               }
             }
+
+            a:active {
+              background: rgba(white, 0.1);
+            }
           }
 
           .inner-subcategory {
             position: relative;
             top: inherit;
             right: inherit;
+
+            a:hover {
+              color: white !important;
+            }
           }
         }
       }
@@ -1407,13 +1434,13 @@ form label {
     
     .shop-grid {
       gap: 1rem;
-      grid-template-columns: 1rem;
+      grid-template-columns: 1fr;
       padding: 1rem;
       margin-top: 56px;
 
       .shop-item {
         span[data-oe-model|="product.template"] {
-          width: calc(100vw - 2rem);
+          width: calc(100dvw - 2rem);
         }
       }
     }
@@ -1506,11 +1533,20 @@ form label {
   }
 }
 
+
+/*************************************
+ *  4K VIEW
+ *************************************/
 @media screen and (min-width: 1500px) {
   .about-us,
   .carousel,
   .cc_shop {
     padding-top: 228px;
+  }
+
+  .oe_website_login_container,
+  .oe_website_sale {
+    padding-top: 228px !important;
   }
 
   #oe_main_menu_navbar+#wrapwrap {
@@ -1540,6 +1576,20 @@ form label {
       left: 2rem;
       right: 2rem;
       bottom: 2rem;
+    }
+  }
+}
+
+.pagination {
+  padding: 1rem;
+  justify-content: center;
+
+  .page-item {
+    &.active {
+      a {
+        background-color: black;
+        border-color: black;
+      }
     }
   }
 }
