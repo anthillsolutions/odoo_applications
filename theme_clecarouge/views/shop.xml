@@ -12,190 +12,33 @@
             <span id="cat-menu-open" class="hidden">▴</span>
           </button>
           <ul class="categories-list">
-            <li>
-              <!-- <ul>
-                <li t-foreach="categories" t-as="c">
-                  <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-field="c.name">
-                  </a>
-                </li>
-              </ul> -->
-              <a href="#" onclick="openCategory(event, 0);">Clés</a>
-              <ul id="sub0" class="subcategories hidden">
-                <li>
-                  <a href="#">Clés modernes</a>
-                </li>
-                <li>
-                  <a href="#">Clés anciennes</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 1);">Coffres-forts</a>
-              <ul id="sub1" class="subcategories hidden">
-                <li>
-                  <a href="#">Armoires pour armes</a>
-                </li>
-                <li>
-                  <a href="#">Rieffel</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 2);">Gestion d'accès</a>
-              <ul id="sub2" class="subcategories hidden">
-                <li>
-                  <a href="#" onclick="openCategory(event, 10);">Entreprise, organisations, communes, immeuble</a>
-                  <span class="extend">
-                    ▸
-                  </span>
-                  <ul id="sub10" class="inner-subcategory hidden">
+            <li t-foreach="categories" t-as="c">
+              <a href="#" t-field="c.name" t-attf-onclick="openCategory(event, {{c.id}})"></a>
+              <ul t-if="c.child_id" t-attf-class="sub-cat subcategories hidden s{{c.id}}">
+                <t t-foreach="c.child_id" t-as="sc">
+                  <t t-if="not search or sc.id in search_categories_ids">
                     <li>
-                      <a href="#">Simons Voss 306</a>
+                      <a t-if="not sc.child_id" t-att-href="keep('/shop/category/' + slug(sc), category=0)"
+                        t-field="sc.name"></a>
+                      <a t-if="sc.child_id" href="#" t-attf-onclick="openCategory(event, {{sc.id}})">
+                        <span class="extend">
+                          ▸
+                        </span>
+                        <t-field t-field="sc.name"></t-field>
+                      </a>
+                      <ul t-if="sc.child_id" t-attf-class="sub-cat inner-subcategory hidden s{{sc.id}}">
+                        <t t-foreach="sc.child_id" t-as="ssc">
+                          <t t-if="not search or ssc.id in search_categories_ids">
+                            <li>
+                              <a t-att-href="keep('/shop/category/' + slug(ssc), category=0)"
+                                t-field="ssc.name"></a>
+                            </li>
+                          </t>
+                        </t>
+                      </ul>
                     </li>
-                    <li>
-                      <a href="#">Iloq - Un monde sans piles</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#" onclick="openCategory(event, 11);">Particuliers, PME</a>
-                  <span class="extend">
-                    ▸
-                  </span>
-                  <ul id="sub11" class="inner-subcategory hidden">
-                    <li>
-                      <a href="#">Simons Voss MobileKey</a>
-                    </li>
-                    <li>
-                      <a href="#">KESO CLIQ Go</a>
-                    </li>
-                    <li>
-                      <a href="#">Biométrie</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 3);">Gestion des clés</a>
-              <ul id="sub3" class="subcategories hidden">
-                <li>
-                  <a href="#">Armoire à clés</a>
-                </li>
-                <li>
-                  <a href="#">Boîtes à clés</a>
-                </li>
-                <li>
-                  <a href="#">Coffres-forts à clés</a>
-                </li>
-                <li>
-                  <a href="#">Garde-clés d'urgence</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 4);">Gestion des colis</a>
-              <ul id="sub4" class="subcategories hidden">
-                <li>
-                  <a href="#">Colis collectives</a>
-                </li>
-                <li>
-                  <a href="#">Colis individuels (privés)</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 5);">Hall d'immeubles</a>
-              <ul id="sub5" class="subcategories hidden">
-                <li>
-                  <a href="#">Tableau d'affichaage/Porte avis</a>
-                </li>
-                <li>
-                  <a href="#">Interphone</a>
-                </li>
-                <li>
-                  <a href="#">Boîtes aux lettres</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 6);">Portes</a>
-              <ul id="sub6" class="subcategories hidden">
-                <li>
-                  <a href="#">Portes blindées</a>
-                </li>
-                <li>
-                  <a href="#">Portes automatiques</a>
-                </li>
-                <li>
-                  <a href="#">Portes anti-feu</a>
-                </li>
-                <li>
-                  <a href="#" onclick="openCategory(event, 12);">Accessoires pour portes</a>
-                  <span class="extend">▸</span>
-                  <ul id="sub12" class="inner-subcategory hidden">
-                    <li>
-                      <a href="#">Poignées</a>
-                    </li>
-                    <li>
-                      <a href="#">Judas</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 7);">Produits de sécurité</a>
-              <ul id="sub7" class="subcategories hidden">
-                <li>
-                  <a href="#">Barres de sécurité</a>
-                </li>
-                <li>
-                  <a href="#">Cylindres &amp; mise en passe</a>
-                </li>
-                <li>
-                  <a href="#">Cadenas</a>
-                </li>
-                <li>
-                  <a href="#">Rosace de sécurité</a>
-                </li>
-                <li>
-                  <a href="#">Serrures de multipoints</a>
-                </li>
-                <li>
-                  <a href="#">Verrous de portes et de fenêtres</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 8);">Vélos-supports, abris et accessoires</a>
-              <ul id="sub8" class="subcategories hidden">
-                <li>
-                  <a href="#">Abris à vélos</a>
-                </li>
-                <li>
-                  <a href="#">Fixation au sol</a>
-                </li>
-                <li>
-                  <a href="#">Fixation au mur</a>
-                </li>
-                <li>
-                  <a href="#">Accessoire</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">Issues de secours</a>
-            </li>
-            <li>
-              <a href="#" onclick="openCategory(event, 9);">Stop-Parking</a>
-              <ul id="sub9" class="subcategories hidden">
-                <li>
-                  <a href="#">Motorisés/Solaire</a>
-                </li>
-                <li>
-                  <a href="#">Simple</a>
-                </li>
+                  </t>
+                </t>
               </ul>
             </li>
           </ul>
@@ -207,7 +50,7 @@
               <a t-att-href="product['product'].website_url"
                 t-attf-class="#{'unpublished' if not product['product'].website_published else ''} shop-item">
                 <t t-set="image_holder" t-value="product['product']._get_image_holder()" />
-                <span t-field="image_holder.image_1920"
+                <span class="aspect" t-field="image_holder.image_1920"
                   t-options="{'widget': 'image', 'preview_image': 'image_1920' if product_image_big else 'image_1024', 'itemprop': 'image'}" />
                 <div class="shop-item-description">
                   <p>
@@ -226,34 +69,6 @@
         </div>
 
         <t t-call="website.pager" />
-
-        <!-- <table class="table table-borderless h-100 m-0" t-att-data-ppg="ppg" t-att-data-ppr="ppr"
-           t-att-data-name="grid_block_name">
-          <colgroup t-ignore="true">
-            <col t-foreach="ppr" t-as="p" />
-          </colgroup>
-          <tbody>
-            <tr t-foreach="bins" t-as="tr_product">
-              <t t-foreach="tr_product" t-as="td_product">
-                <t t-if="td_product">
-                  <td t-att-colspan="td_product['x'] != 1 and td_product['x']"
-                    t-att-rowspan="td_product['y'] != 1 and td_product['y']"
-                    t-attf-class="oe_product"
-                    t-att-data-ribbon-id="td_product['ribbon'].id"
-                    t-att-data-name="product_block_name">
-                    <div
-                      t-attf-class="o_wsale_product_grid_wrapper position-relative h-100 o_wsale_product_grid_wrapper_#{td_product['x']}_#{td_product['y']}">
-                      <t t-call="website_sale.products_item">
-                        <t t-set="product" t-value="td_product['product']" />
-                      </t>
-                    </div>
-                  </td>
-                </t>
-                <td t-else="" />
-              </t>
-            </tr>
-          </tbody>
-        </table> -->
       </div>
 
       <div class="cc_search hidden">
@@ -269,222 +84,5 @@
         <div class="cc_shadow" onClick="closeSearch()"></div>
       </div>
     </xpath>
-
-    <!-- <xpath expr="//div[@id='wrap']" position="replace">
-      <section id="cc-shop" class="cc-shop" onclick="closeMenus()">
-        <div class="shop-grid">
-          <div class="shop-options-mobile mobile-only" id="menu_mobile_shop">
-            <button onClick="toggleMenuMobileShop()">
-              <span class="text-left">Filtrer et trier</span>
-              <span class="icon-down">
-                ▾
-              </span>
-              <span class="icon-up">
-                ▴
-              </span>
-            </button>
-            <div class="shop-options-mobile-panel">
-            <hr></hr>
-              <div>Filtre</div>
-              <ul>
-                <li>
-                  <a href="/shop">
-                    Tout
-                  </a>
-                </li>
-                <li t-foreach="categories" t-as="c">
-                  <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-field="c.name">
-                  </a>
-                </li>
-              </ul>
-              <hr></hr>
-              <div>Trier par</div>
-              <t t-set="list_price_asc_label">Price - Low to High</t>
-              <t t-set="list_price_desc_label">Price - High to Low</t>
-              <t t-set="newest_arrivals_desc_label">Newest arrivals</t>
-              <t t-set="name_asc_label">Name</t>
-              <t t-set="website_sale_sortable"
-                t-value="[
-                (list_price_asc_label, 'list_price asc'),
-                (list_price_desc_label, 'list_price desc'),
-                (newest_arrivals_desc_label, 'create_date desc'),
-                (name_asc_label, 'name asc')
-            ]" />
-              <ul>
-                <li t-foreach="website_sale_sortable" t-as="sortby">
-                  <a role="menuitem" rel="noindex,nofollow"
-                    t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
-                    <span t-out="sortby[0]" />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="shop-list-mobile mobile-only">
-            <t t-foreach="products" t-as="product">
-                <a t-att-href="product.website_url"
-                  t-attf-class="#{'unpublished' if not product.website_published else ''} shop-item">
-                  <t t-set="image_holder" t-value="product._get_image_holder()" />
-                  <span t-field="image_holder.image_1920"
-                    t-options="{'widget': 'image', 'preview_image': 'image_1920' if product_image_big else 'image_1024', 'itemprop': 'image'}" />
-                  <div class="shop-item-description">
-                    <p>
-                      <span t-field="product.name"></span>
-                    </p>
-                    <t t-set="combination_info"
-                      t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)" />
-                    <p>
-                      <span t-esc="combination_info['price']" style="white-space: nowrap;"
-                        t-options="{'widget': 'monetary','display_currency': website.currency_id}" />
-                    </p>
-                  </div>
-                </a>
-            </t>
-          </div>
-
-          <div class="shop-list desktop-only">
-            <t t-foreach="products" t-as="product">
-              <t t-if="product_index % 3 == 0">
-                <a t-att-href="product.website_url" t-attf-class="#{'unpublished' if not product.website_published else ''} shop-item">
-                  <t t-set="image_holder" t-value="product._get_image_holder()" />
-                  <span t-field="image_holder.image_1920"
-                    t-options="{'widget': 'image', 'preview_image': 'image_1920' if product_image_big else 'image_1024', 'itemprop': 'image'}" />
-                  <div class="shop-item-description">
-                    <p>
-                      <span t-field="product.name"></span>
-                    </p>
-                    <t t-set="combination_info"
-                      t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)" />
-                    <p>
-                      <span t-esc="combination_info['price']" style="white-space: nowrap;"
-                        t-options="{'widget': 'monetary','display_currency': website.currency_id}" />
-                    </p>
-                  </div>
-                </a>
-              </t>
-            </t>
-          </div>
-
-          <div class="shop-list desktop-only">
-            <t t-foreach="products" t-as="product">
-              <t t-if="product_index % 3 == 1">
-                <a t-att-href="product.website_url"
-                  t-attf-class="#{'unpublished' if not product.website_published else ''} shop-item">
-                  <t t-set="image_holder" t-value="product._get_image_holder()" />
-                  <span t-field="image_holder.image_1920"
-                    t-options="{'widget': 'image', 'preview_image': 'image_1920' if product_image_big else 'image_1024', 'itemprop': 'image'}" />
-                  <div class="shop-item-description">
-                    <p>
-                      <span t-field="product.name"></span>
-                    </p>
-                    <t t-set="combination_info"
-                      t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)" />
-                    <p>
-                      <span t-esc="combination_info['price']" style="white-space: nowrap;"
-                        t-options="{'widget': 'monetary','display_currency': website.currency_id}" />
-                    </p>
-                  </div>
-                </a>
-              </t>
-            </t>
-          </div>
-
-          <div class="shop-list desktop-only">
-            <t t-foreach="products" t-as="product">
-              <t t-if="product_index % 3 == 2">
-                <a t-att-href="product.website_url"
-                  t-attf-class="#{'unpublished' if not product.website_published else ''} shop-item">
-                  <t t-set="image_holder" t-value="product._get_image_holder()" />
-                  <span t-field="image_holder.image_1920"
-                    t-options="{'widget': 'image', 'preview_image': 'image_1920' if product_image_big else 'image_1024', 'itemprop': 'image'}" />
-                  <div class="shop-item-description">
-                    <p>
-                      <span t-field="product.name"></span>
-                    </p>
-                    <p>
-                      <span t-esc="combination_info['price']" style="white-space: nowrap;"
-                        t-options="{'widget': 'monetary','display_currency': website.currency_id}" />
-                    </p>
-                  </div>
-                </a>
-              </t>
-            </t>
-          </div>
-        </div>
-
-        <div class="shop-options desktop-only">
-          <div id="options-filter" class="shop-options-filter">
-            <ul>
-              <li>
-                <a href="/shop">
-                  Tout
-                </a>
-              </li>
-              <li t-foreach="categories" t-as="c">
-                <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-field="c.name">
-                </a>
-              </li>
-            </ul>
-
-            <button onclick="openMenu('options-filter')">
-              <span class="text-left">Filtre</span>
-              <span class="icon-down">
-                ▾
-              </span>
-              <span class="icon-up">
-                ▴
-              </span>
-            </button>
-          </div>
-
-          <div id="options-sort" class="shop-options-sort">
-            <t t-set="list_price_asc_label">Price - Low to High</t>
-            <t t-set="list_price_desc_label">Price - High to Low</t>
-            <t t-set="newest_arrivals_desc_label">Newest arrivals</t>
-            <t t-set="name_asc_label">Name</t>
-          <t t-set="website_sale_sortable"
-              t-value="[
-                (list_price_asc_label, 'list_price asc'),
-                (list_price_desc_label, 'list_price desc'),
-                (newest_arrivals_desc_label, 'create_date desc'),
-                (name_asc_label, 'name asc')
-            ]" />
-            <ul >
-              <li t-foreach="website_sale_sortable" t-as="sortby">
-                <a role="menuitem" rel="noindex,nofollow"
-                  t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
-                  <span t-out="sortby[0]" />
-                </a>
-              </li>
-            </ul>
-
-            <button onclick="openMenu('options-sort')">
-              <span class="text-left">
-                Trier par
-              </span>
-              <span class="icon-down">
-                ▾
-              </span>
-              <span class="icon-up">
-                ▴
-              </span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <div class="cc_search hidden">
-        <t t-call="website.website_search_box_input">
-          <t t-set="search_type" t-valuef="all" />
-          <t t-set="action" t-valuef="/website/search" />
-          <t t-set="limit" t-valuef="5" />
-          <t t-set="display_image" t-valuef="true" />
-          <t t-set="display_description" t-valuef="true" />
-          <t t-set="display_extra_link" t-valuef="true" />
-          <t t-set="display_detail" t-valuef="true" />
-        </t>
-        <div class="cc_shadow" onClick="closeSearch()"></div>
-      </div>
-    </xpath> -->
   </template>
 </odoo>

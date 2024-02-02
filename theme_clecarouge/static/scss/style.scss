@@ -164,7 +164,8 @@ a {
 .carousel,
 .cc-shop,
 .cc_shop,
-.o_portal_wrap {
+.o_portal_wrap,
+#wrap {
   padding-top: 132px;
   box-sizing: border-box;
 }
@@ -441,7 +442,7 @@ button {
 
 /* NEW SHOP */
 .cc_shop {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   color: black;
 
   a {
@@ -576,8 +577,13 @@ button {
       height: 100%;
     }
 
+    .aspect {
+      aspect-ratio: 1;
+    }
+
     img {
       object-fit: contain;
+      background: white;
     }
 
     .shop-item-description {
@@ -610,163 +616,6 @@ button {
 }
 /* END OF NEW SHOP */
 
-.cc-shop {
-  height: 100vh;
-  box-sizing: border-box;
-  position: relative;
-  font-family: 'MarkPro', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 25px;
-
-  .shop-options {
-    position: fixed;
-    top: 120px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    pointer-events: none;
-
-    div {
-      display: grid;
-      grid-template-rows: 1fr auto;
-
-      ul {
-        list-style-type: none;
-        transform: translateY(100%);
-        transition: 0.3s;
-        background: black;
-        z-index: 1;
-        margin-bottom: 0;
-        padding: 0;
-        pointer-events: fill;
-
-        li {
-          border-bottom: solid 1px white;
-          cursor: pointer;
-
-          a {
-            color: white;
-            text-decoration: none;
-            width: 100%;
-            padding: 0.5rem 1rem;
-            display: block;
-
-            &:hover {
-              text-decoration: none;
-              color: black;
-            }
-          }
-
-          &:first-child {
-            border-top: solid 1px white;
-          }
-
-          &:hover {
-            background: white;
-            color: black;
-
-            a {
-              color: black;
-            }
-          }
-        }
-
-        &.visible {
-          transform: translateY(0);
-          transition: 0.5s;
-        }
-      }
-    }
-
-    button {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      border: none;
-      z-index: 2;
-      pointer-events: fill;
-
-      .icon-down {
-        display: none;
-      }
-
-      &.down {
-        .icon-down {
-          display: inline;
-        }
-
-        .icon-up {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .shop-grid {
-    padding-top: 1rem;
-    padding-bottom: 6rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .shop-item {
-    position: relative;
-    cursor: pointer;
-    display: block;
-    margin-bottom: 1rem;
-
-    img {
-      width: 100%;
-    }
-
-    .shop-item-description {
-      opacity: 0;
-      transition: 0.5s;
-      background: black;
-      position: absolute;
-      display: grid;
-      align-items: end;
-      grid-template-rows: 1fr auto;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      color: white;
-
-      p {
-        padding: 0;
-        margin: 0;
-      }
-    }
-
-    &:hover {
-      .shop-item-description {
-        opacity: 1;
-        transition: 0.5s;
-      }
-    }
-
-    &.unpublished::before {
-      content: 'Non publié';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      height: 8rem;
-      pointer-events: none;
-      background: rgba(black, 0.5);
-      color: white;
-      text-align: center;
-      display: grid;
-      align-items: center;
-    }
-  }
-}
 
 /* PRODUCT */
 .product {
@@ -917,7 +766,7 @@ button {
 
 /* prestations-page */
 .prestations-page {
-  padding-top: 120px;
+  padding-top: 132px;
   height: 100%;
 
   h2 {
@@ -1107,7 +956,7 @@ button {
 /* Overwrite */
 .oe_website_login_container,
 .oe_website_sale {
-  padding-top: 120px !important;
+  padding-top: 132px !important;
 
   table {
     background: white;
@@ -1203,6 +1052,18 @@ form label {
 
   .cc_header {
     top: 46px;
+  }
+}
+
+#product_detail {
+  .carousel {
+    padding-top: 0;
+  }
+
+  .carousel-inner {
+    .align-items-center {
+      align-items: start !important;
+    }
   }
 }
 
@@ -1540,7 +1401,8 @@ form label {
 @media screen and (min-width: 1500px) {
   .about-us,
   .carousel,
-  .cc_shop {
+  .cc_shop,
+  #wrap {
     padding-top: 228px;
   }
 

@@ -266,12 +266,17 @@ if (shop) {
 }
 
 /* SHOP MENU ITEMS */
-const subcategories = 13;
-const openCategory = (event, index) => {
+const subcategories = Array.from(document.getElementsByClassName('sub-cat'));
+const openCategory = (event, id) => {
   event.stopImmediatePropagation();
   event.preventDefault();
   closeCategories(event.target);
-  document.getElementById(`sub${index}`).classList.remove('hidden');
+  subcategories.forEach((sub) => {
+    if (sub.classList.contains(`s${id}`)) {
+      console.log('found');
+      sub.classList.remove('hidden');
+    }
+  });
 };
 
 const toggleCategoriesMobile = () => {
@@ -280,9 +285,9 @@ const toggleCategoriesMobile = () => {
   document.getElementsByClassName('categories-list')[0].classList.toggle('show');
 };
 
-const closeCategories = (current) => { 
-  [...new Array(subcategories)].map((_, index) => {
-    const sub = document.getElementById(`sub${index}`);
+const closeCategories = (current) => {
+  subcategories.forEach((sub) => {
+    // const sub = document.getElementById(element.id);
     if (sub && !sub.contains(current)) {
         sub.classList.add('hidden');
     }
@@ -298,7 +303,7 @@ const resizeShop = () => {
   const shop = document.getElementsByClassName('shop-grid')[0];
 
   if (categoriesList && shop) {
-    shop.style.paddingTop = `${categoriesList.clientHeight}px`;
+    shop.style.paddingTop = `${categoriesList.clientHeight + 32}px`;
   }
 };
 
