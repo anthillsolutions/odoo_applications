@@ -273,8 +273,13 @@ const openCategory = (event, id) => {
   closeCategories(event.target);
   subcategories.forEach((sub) => {
     if (sub.classList.contains(`s${id}`)) {
-      console.log('found');
       sub.classList.remove('hidden');
+      const clientRect = sub.getBoundingClientRect();
+      sub.style.maxHeight = `${window.innerHeight - clientRect.top}px`;
+      
+      if (clientRect.right > window.innerWidth) {
+        sub.style.left = clientRect.right - window.innerWidth;
+      }
     }
   });
 };
