@@ -476,7 +476,6 @@ button {
       padding: 0;
       margin: 0;
       width: max-content;
-      overflow: scroll;
 
       li {
         border-top: solid 1px white;
@@ -519,14 +518,12 @@ button {
 
       .inner-subcategory {
         position: absolute;
-        right: -300px;
         top: 0;
         z-index: 1;
         background: black;
         color: white;
         padding: 0;
         margin: 0;
-        width: 300px;
 
         a {
           color: white;

@@ -276,9 +276,21 @@ const openCategory = (event, id) => {
       sub.classList.remove('hidden');
       const clientRect = sub.getBoundingClientRect();
       sub.style.maxHeight = `${window.innerHeight - clientRect.top}px`;
-      
-      if (clientRect.right > window.innerWidth) {
-        sub.style.left = clientRect.right - window.innerWidth;
+
+      if (sub.classList.contains('subcategories') && clientRect.right > window.innerWidth) {
+        sub.style.left = `${window.innerWidth - clientRect.right}px`;
+        return;
+      }
+
+      if (sub.classList.contains('inner-subcategory') && 
+        window.innerWidth - sub.parentElement.parentElement.getBoundingClientRect().right < clientRect.width
+      ) {
+        sub.style.left = `-${clientRect.width}px`;
+        return;
+      }
+
+      if (sub.classList.contains('inner-subcategory')) {
+        sub.style.left = `${sub.parentElement.parentElement.offsetWidth}px`;
       }
     }
   });
