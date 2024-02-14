@@ -296,6 +296,27 @@ const openCategory = (event, id) => {
   });
 };
 
+// const scrollUp = (event, id) => { 
+//   event.stopImmediatePropagation();
+//   event.preventDefault();
+//   const found = subcategories.find((sub) => sub.classList.contains(`s${id}`));
+
+//   if (!found) {
+//     return;
+//   }
+
+//   const ul = found.getElementsByTagName('ul')[0];
+//   if (window.innerHeight - found.getBoundingClientRect().top < ul?.getBoundingClientRect().height) {
+//     console.log('fake scrolll');
+//     ul.style.top = '0';
+//   }
+// };
+
+// const scrollDown = (event, id) => { 
+//   event.stopImmediatePropagation();
+//   event.preventDefault();
+// };
+
 const toggleCategoriesMobile = () => {
   document.getElementById('cat-menu-open').classList.toggle('hidden');
   document.getElementById('cat-menu-closed').classList.toggle('hidden');
@@ -304,7 +325,6 @@ const toggleCategoriesMobile = () => {
 
 const closeCategories = (current) => {
   subcategories.forEach((sub) => {
-    // const sub = document.getElementById(element.id);
     if (sub && !sub.contains(current)) {
         sub.classList.add('hidden');
     }
