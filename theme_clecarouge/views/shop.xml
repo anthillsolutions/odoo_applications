@@ -18,8 +18,6 @@
               <a t-if="c.child_id" href="#" t-field="c.name"
                 t-attf-onclick="openCategory(event, {{c.id}})"></a>
               <div t-if="c.child_id" t-attf-class="sub-cat subcategories hidden s{{c.id}}">
-                <!-- <button class="btn-nav btn-nav-top" t-attf-onclick="scrollDown(event, 's{{c.id}}')">▴</button>
-                <button class="btn-nav btn-nav-bottom" t-attf-onclick="scrollUp(event, 's{{c.id}}')">▾</button> -->
               <ul>
                 <t t-foreach="c.child_id" t-as="sc">
                   <t t-if="not search or sc.id in search_categories_ids">

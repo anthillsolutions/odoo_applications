@@ -29,10 +29,15 @@
               </a>
               <t t-call="portal.user_dropdown"></t>
             </li>
-            <li class="shop_only">
+            <li class="shop_only shop_cart">
               <a href="/shop/cart" class="no_border">
                 <img src="/theme_clecarouge/static/img/icone_panier.svg" width="32px" height="32px" />
               </a>
+              <t t-set="website_sale_cart_quantity"
+                t-value="request.session['website_sale_cart_quantity'] if 'website_sale_cart_quantity' in request.session else website.sale_get_order().cart_quantity or 0" />
+              <div class="shop-pill" t-if="website_sale_cart_quantity != 0">
+                <span t-esc="website_sale_cart_quantity"></span>
+              </div>
             </li>
           </ul>
           <button class="cc_close_menu" onclick="toggleMenuMobile()">

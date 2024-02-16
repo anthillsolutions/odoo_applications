@@ -265,6 +265,17 @@ if (shop) {
   shop.classList.add('no-background');
 }
 
+/* PRODUCT REFRESH */
+const addToCart = document.getElementById('add_to_cart');
+
+if (addToCart) {
+  addToCart.addEventListener('click', (event) => {
+    setTimeout(() => {
+      location.reload();
+    }, 1000);
+  })
+}
+
 /* SHOP MENU ITEMS */
 const subcategories = Array.from(document.getElementsByClassName('sub-cat'));
 const openCategory = (event, id) => {
@@ -295,27 +306,6 @@ const openCategory = (event, id) => {
     }
   });
 };
-
-// const scrollUp = (event, id) => { 
-//   event.stopImmediatePropagation();
-//   event.preventDefault();
-//   const found = subcategories.find((sub) => sub.classList.contains(`s${id}`));
-
-//   if (!found) {
-//     return;
-//   }
-
-//   const ul = found.getElementsByTagName('ul')[0];
-//   if (window.innerHeight - found.getBoundingClientRect().top < ul?.getBoundingClientRect().height) {
-//     console.log('fake scrolll');
-//     ul.style.top = '0';
-//   }
-// };
-
-// const scrollDown = (event, id) => { 
-//   event.stopImmediatePropagation();
-//   event.preventDefault();
-// };
 
 const toggleCategoriesMobile = () => {
   document.getElementById('cat-menu-open').classList.toggle('hidden');

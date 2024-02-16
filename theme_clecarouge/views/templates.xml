@@ -1,3 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+  <template id="clecarouge_cart" inherit_id="website_sale.cart" name="CleCarouge cart">
+    <xpath expr="//div[@id='wrap']" position="attributes">
+      <attribute name="class">cc_cart</attribute>
+    </xpath>
+  </template>
+
+  <template id="clecarouge_payment" inherit_id="website_sale.payment" name="CleCarouge payment">
+    <xpath expr="//div[@id='wrap']" position="attributes">
+      <attribute name="class">cc_payment</attribute>
+    </xpath>
+  </template>
+
+  <template id="clecarouge_checkout" inherit_id="website_sale.checkout" name="CleCarouge checkout">
+    <xpath expr="//div[@id='wrap']" position="attributes">
+      <attribute name="class">cc_checkout</attribute>
+    </xpath>
+  </template>
+
+  <template id="clecarouge_address" inherit_id="website_sale.address" name="CleCarouge address">
+    <xpath expr="//div[@id='wrap']" position="attributes">
+      <attribute name="class">cc_address</attribute>
+    </xpath>
+  </template>
+
+  <template id="clecarouge_confirmation" inherit_id="website_sale.confirmation" name="CleCarouge confirmation">
+    <xpath expr="//div[@id='wrap']" position="attributes">
+      <attribute name="class">cc_confirmation</attribute>
+    </xpath>
+  </template>
 </odoo>
