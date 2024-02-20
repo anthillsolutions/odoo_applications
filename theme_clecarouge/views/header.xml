@@ -23,10 +23,19 @@
                 height="32px" />
             </li>
             <li class="shop_only">
-              <a href="/web/login" class="no_border">
-                <img src="/theme_clecarouge/static/img/icone_creer_un_compte.svg" width="32px"
-                  height="32px" />
-              </a>
+              <t t-set="is_connected" t-value="website.user_id != user_id" />
+              <t t-if="is_connected">
+                <a href="/my/home" class="no_border">
+                  <img src="/theme_clecarouge/static/img/icone_creer_un_compte.svg" width="32px"
+                    height="32px" />
+                </a>
+              </t>
+              <t t-else="">
+                <a href="/web/login" class="no_border">
+                  <img src="/theme_clecarouge/static/img/icone_creer_un_compte.svg" width="32px"
+                    height="32px" />
+                </a>
+              </t>
               <t t-call="portal.user_dropdown"></t>
             </li>
             <li class="shop_only shop_cart">
