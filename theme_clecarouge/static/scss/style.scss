@@ -699,6 +699,7 @@ button {
         a {
           padding: 0.375rem;
           font-size: 12px;
+          text-wrap: nowrap;
         }
 
         &:hover {
@@ -1585,7 +1586,7 @@ form label {
 
   .cc_shop {
     .shop-grid {
-      grid-template-columns: repeat(5, 20rem);
+      grid-template-columns: repeat(5, 16rem);
     }
   }
 }
@@ -1600,6 +1601,14 @@ form label {
         background-color: black;
         border-color: black;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .cc_shop {
+    .shop-grid {
+      grid-template-columns: repeat(5, 19.5rem);
     }
   }
 }
