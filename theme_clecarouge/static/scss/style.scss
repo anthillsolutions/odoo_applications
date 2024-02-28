@@ -1307,6 +1307,19 @@ form label {
     display: inherit;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .oe_website_sale h1[itemprop="name"] {
+    font-weight: 400;
+    font-family: 'MarkPro', sans-serif;
+    font-size: 30px;
+    line-height: 35px;
+  }
+
   h1 {
     margin-bottom: 1rem;
   }
@@ -1353,7 +1366,7 @@ form label {
       
       p {
         span {
-          font-size: 25px !important;
+          font-size: 20px !important;
         }
       }
     }
@@ -1364,7 +1377,7 @@ form label {
   }
 
   figcaption {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .about-us,
@@ -1392,7 +1405,7 @@ form label {
   }
 
   .contact-us {
-    font-size: 25px;
+    font-size: 20px;
     grid-template-rows: 60% auto auto;
 
     .text-container {

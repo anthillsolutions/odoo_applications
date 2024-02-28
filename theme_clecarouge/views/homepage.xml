@@ -116,7 +116,7 @@
             <div class="contact-map" id="contact-map">
             </div>
 
-            <button class="newsletter">S'abonner à notre newsletter</button>
+            <!-- <button class="newsletter">S'abonner à notre newsletter</button> -->
         </section>
         </xpath>
     </template>
