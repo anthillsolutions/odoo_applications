@@ -265,15 +265,29 @@ if (shop) {
   shop.classList.add('no-background');
 }
 
-/* PRODUCT REFRESH */
-const addToCart = document.getElementById('add_to_cart');
+const shopPill = document.querySelector('div.shop-pill');
 
-if (addToCart) {
-  addToCart.addEventListener('click', (event) => {
-    setTimeout(() => {
-      location.reload();
-    }, 1000);
-  })
+const hideCartPill = (el) => {
+  if (el.innerHTML === "0") {
+    shopPill.classList.add('hidden');
+  } else {
+    shopPill.classList.remove('hidden');
+  }
+};
+
+if (shopPill) { 
+  const cartPill = shopPill.querySelector('span.my_cart_quantity');
+  hideCartPill(cartPill);
+
+  const config = { attributes: true, childList: true, subtree: true, characterData:true };
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes.length) {
+        hideCartPill(cartPill);
+      }
+    });
+  });
+  observer.observe(cartPill, config);
 }
 
 /* SHOP MENU ITEMS */
